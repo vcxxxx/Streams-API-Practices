@@ -23,7 +23,7 @@ public class EasyNumbersProblemSolution {
   }
 
   public static String getSmallestPossibleValue(List<Integer> input) {
-    return input.stream().map(String::valueOf).sorted().collect(Collectors.joining());
+    return input.stream().map(String::valueOf).sorted((a,b) -> (a+b).compareTo(b+a)).collect(Collectors.joining());
   }
 
   public static String getHighestPossibleValue(List<Integer> input) {

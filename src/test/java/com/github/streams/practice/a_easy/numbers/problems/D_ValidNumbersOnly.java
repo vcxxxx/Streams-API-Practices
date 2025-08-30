@@ -3,7 +3,6 @@ package com.github.streams.practice.a_easy.numbers.problems;
 import com.github.streams.practice.a_easy.numbers.EasyNumbersProblemSolution;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -15,11 +14,15 @@ import org.junit.jupiter.api.Test;
  * Explanation: Parses strings as integers and returns a list of valid integers.
  */
 class D_ValidNumbersOnly {
+
+  private List<String> getNumbersOnly(List<String> input) {
+    return input.stream().filter(s -> s.chars().allMatch(Character::isDigit)).toList();
+  }
+
   @Test
-  @Disabled
   void testCheckAllIntegersWithoutAlphabets() {
     final var input = List.of("1", "12", "12a", "a12");
-    var yourSolution = List.of();
+    var yourSolution = getNumbersOnly(input);
     var mySolution = EasyNumbersProblemSolution.getNumberOnly(input);
 
     Assertions.assertEquals(mySolution, yourSolution);

@@ -2,8 +2,9 @@ package com.github.streams.practice.a_easy.numbers.problems;
 
 import com.github.streams.practice.a_easy.numbers.EasyNumbersProblemSolution;
 import com.github.streams.practice.a_easy.numbers.problems.ignore.data.DummyData;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /*
@@ -14,12 +15,18 @@ import org.junit.jupiter.api.Test;
  * */
 class G_DescendingNumberValue {
 
+  private String getHighestValue(List<Integer> input) {
+    return input.stream()
+        .map(String::valueOf)
+        .sorted((a, b) -> (b + a).compareTo(a + b))
+        .collect(Collectors.joining());
+  }
+
   @Test
-  @Disabled
   public void test() {
     var input = DummyData.fakeList(7);
     var mySolution = EasyNumbersProblemSolution.getHighestPossibleValue(input);
-    var yourSolution = "";
+    var yourSolution = getHighestValue(input);
 
     Assertions.assertEquals(mySolution, yourSolution);
   }

@@ -3,7 +3,6 @@ package com.github.streams.practice.a_easy.numbers.problems;
 import com.github.streams.practice.a_easy.numbers.EasyNumbersProblemSolution;
 import com.github.streams.practice.a_easy.numbers.problems.ignore.data.DummyData;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -19,12 +18,15 @@ import org.junit.jupiter.api.Test;
  */
 class C_SumOfDigits {
 
+  private Long sumOfDigits(int input) {
+    return String.valueOf(input).chars().map(Character::getNumericValue).asLongStream().sum();
+  }
+
   @Test
-  @Disabled
   void testSumOfDigits() {
     final var input = DummyData.fakerNumber();
     var mySolution = EasyNumbersProblemSolution.sumOfDigits(input);
-    var yourSolution = 2;
+    var yourSolution = sumOfDigits(input);
 
     Assertions.assertEquals(mySolution, yourSolution);
   }

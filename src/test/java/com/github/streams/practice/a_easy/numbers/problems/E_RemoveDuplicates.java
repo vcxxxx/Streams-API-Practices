@@ -4,7 +4,6 @@ import com.github.streams.practice.a_easy.numbers.EasyNumbersProblemSolution;
 import com.github.streams.practice.a_easy.numbers.problems.ignore.data.DummyData;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -17,11 +16,14 @@ import org.junit.jupiter.api.Test;
  */
 class E_RemoveDuplicates {
 
+  private List<Long> getUniqueNumberFromList(List<Long> input) {
+    return input.stream().distinct().toList();
+  }
+
   @Test
-  @Disabled
   void testRemoveDuplicationFromListTest() {
     final var input = DummyData.fakeListOfLongNumbers();
-    var yourSolution = List.<Long>of();
+    var yourSolution = getUniqueNumberFromList(input);
     var mySolution = EasyNumbersProblemSolution.getUniqueNumberFromList(input);
 
     Assertions.assertEquals(mySolution, yourSolution);

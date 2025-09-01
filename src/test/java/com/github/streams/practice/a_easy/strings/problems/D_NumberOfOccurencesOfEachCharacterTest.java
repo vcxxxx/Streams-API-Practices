@@ -4,17 +4,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.github.streams.practice.a_easy.strings.StringProblemsSolution;
 import java.util.Map;
-import org.junit.jupiter.api.Disabled;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 class D_NumberOfOccurencesOfEachCharacterTest {
   @Test
-  @Disabled("Remove This Once you Complete The Exercise")
   void numberOfOccurencesOfEachCharacter() {
     final String input = "the quick brown fox jumps right over the little lazy dog little";
     final var mySolution = StringProblemsSolution.findOccurenceOfCharacter(input);
-    final Map<Character, Long> yourSolution = null;
+    final Map<Character, Long> yourSolution = findOccurences(input);
 
     assertEquals(mySolution, yourSolution);
+  }
+
+  private Map<Character, Long> findOccurences(String input) {
+
+    return input
+        .chars()
+        .filter(c -> c != ' ')
+        .mapToObj(c -> (char) c)
+        .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
   }
 }

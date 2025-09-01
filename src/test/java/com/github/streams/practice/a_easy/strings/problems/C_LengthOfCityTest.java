@@ -1,11 +1,10 @@
 package com.github.streams.practice.a_easy.strings.problems;
 
 import com.github.streams.practice.a_easy.strings.StringProblemsSolution;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -23,12 +22,16 @@ import org.junit.jupiter.api.Test;
  */
 class C_LengthOfCityTest {
   @Test
-  @Disabled
   void testCalculateLengthOfEachCityTest() {
     final var cities = List.of("Mumbai", "Munnar", "Chennai", "Hyderabad");
     final var mySolution = StringProblemsSolution.findLengthOfEachCityAlongWithSize(cities);
-
-    final Map<String, Integer> yourSolution = new HashMap<>();
+    final Map<String, Integer> yourSolution = calculateLength(cities);
     Assertions.assertEquals(yourSolution, mySolution);
+  }
+
+  private Map<String, Integer> calculateLength(List<String> cities) {
+    return cities.stream()
+        .filter(s -> s.charAt(0) == 'M' || s.charAt(0) == 'm')
+        .collect(Collectors.toMap(s -> s, String::length));
   }
 }

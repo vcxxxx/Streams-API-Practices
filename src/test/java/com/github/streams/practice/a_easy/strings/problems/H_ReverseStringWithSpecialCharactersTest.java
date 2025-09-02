@@ -20,7 +20,6 @@ class H_ReverseStringWithSpecialCharactersTest {
    * @todo Implement this test method
    */
   @Test
-  @Disabled
   void testReverseStringWithSpecialCharactersTest() {
     var input = "Hello world! This is a test. 😅";
     var mySolution = StringProblemsSolution.reverseStringWithSpecialCharacters(input);

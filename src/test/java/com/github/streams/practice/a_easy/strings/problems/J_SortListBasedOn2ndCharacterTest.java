@@ -1,11 +1,10 @@
 package com.github.streams.practice.a_easy.strings.problems;
 
 import com.github.streams.practice.a_easy.strings.StringProblemsSolution;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import net.datafaker.Faker;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class J_SortListBasedOn2ndCharacterTest {
@@ -18,7 +17,6 @@ class J_SortListBasedOn2ndCharacterTest {
    * @see StringProblemsSolution#sortListBasedOn2ndCharacter(List)
    */
   @Test
-  @Disabled
   void testSortListBasedOn2ndCharacter() {
     final var fakePersons = new Faker().name();
     List<String> input =
@@ -48,8 +46,12 @@ class J_SortListBasedOn2ndCharacterTest {
             fakePersons.name());
 
     List<String> mySolution = StringProblemsSolution.sortListBasedOn2ndCharacter(input);
-    List<String> yourSolution = Collections.emptyList();
+    List<String> yourSolution = solution(input);
 
     Assertions.assertEquals(mySolution, yourSolution);
+  }
+
+  private List<String> solution(List<String> input) {
+    return input.stream().sorted(Comparator.comparing(s -> s.charAt(1))).toList();
   }
 }
